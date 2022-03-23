@@ -1,0 +1,10 @@
+*.snap
+*.html
+*.png
+*.ttf
+*.woff
+*.woff2
+*.svg
+*.eot
+*.jpg
+package.json
