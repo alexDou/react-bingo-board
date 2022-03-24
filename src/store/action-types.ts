@@ -1,6 +1,7 @@
 export const enum AppsActionTypes {
   'GET_APPS' = 'GET_APPS',
   'SET_APPS' = 'SET_APPS',
+  'SET_APPS_SORT' = 'SET_APPS_SORT',
   'SET_APPS_PER_PAGE' = 'SET_APPS_PER_PAGE',
   'SET_PAGE_INDEX' = 'SET_PAGE_INDEX',
   'SET_PAGE_SIZE' = 'SET_PAGE_SIZE',

@@ -4,6 +4,7 @@ import {AppsActionTypes} from "../action-types";
 const initialState: AppsState = {
   totalCount: 0,
   applications: [],
+  applicationsSort: [],
   request: {
     pageIndex: 0,
     pageSize: 0,
@@ -14,7 +15,10 @@ const initialState: AppsState = {
   reload: false
 };
 
-export default function appsReducer(state: AppsState = initialState, {type, payload}: { type: AppsActionTypes, payload: Partial<AppsState> }) {
+export default function appsReducer(
+  state: AppsState = initialState,
+  {type, payload}: { type: AppsActionTypes, payload: Partial<AppsState> }
+) {
   switch (type) {
     case AppsActionTypes.SET_APPS_PER_PAGE:
     case AppsActionTypes.SET_PAGE_INDEX:
@@ -27,9 +31,10 @@ export default function appsReducer(state: AppsState = initialState, {type, payl
         }
       };
     case AppsActionTypes.SET_APPS:
+    case AppsActionTypes.SET_APPS_SORT:
       return {
         ...state,
-        apps: {...payload.applications}
+        ...payload
       };
     default:
       return state;

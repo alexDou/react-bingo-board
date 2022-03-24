@@ -1,0 +1,12 @@
+@import "colors";
+
+.apps-wrapper {
+  width: 100%;
+  height: auto;
+  margin: 22px 0;
+  padding: 0 8px 10px 16px;
+  background: $white;
+  border: 1px solid $white;
+  box-shadow: 0 1px 1px rgba(11, 15, 50, 0.06);
+  border-radius: 20px;
+}

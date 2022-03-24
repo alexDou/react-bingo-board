@@ -1,6 +1,6 @@
-###Front-End App Games Board
+### Front-End App Games Board
 
-####Welcome
+#### Welcome
 
 At Admix we’re always looking to find ways to enable our users to discover games and other Admix inventory. That inventory however needs management! Below you will find information regarding two endpoints and a series of designs that need to be created to manage that data! Please read the follow instruction carefully and create a prototype that not only matches the designs provided but shows off your skills at data management. 
 
@@ -9,9 +9,9 @@ At Admix we’re always looking to find ways to enable our users to discover gam
 [ProtoType](https://www.figma.com/proto/LR9mb7UU2Uzkn5GmrppjQP/%5Bjob%5D-Front-end-assignment?node-id=1%3A1691&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A1691)
 
 ---
-###Requirements:
+### Requirements:
 
-####Key Requirements:
+#### Key Requirements:
 
 1. Use Typescript.
 2. Styles in the Figma match style's in the created prototype.
@@ -27,7 +27,7 @@ Make use of a bootstrap libraries conventions for validation and messaging.
 [TypeScript](https://www.typescriptlang.org/)
 
 ---
-###API Spec
+### API Spec
 
 | Method    | Header            | URL                   |Body           |Response           |
 |:----------|:-----------------|:----------------------|--------------:|------------------:|
@@ -77,7 +77,7 @@ App {
 
 ---
 
-#####Example 1: Grab the first five results (first page of five results)
+##### Example 1: Grab the first five results (first page of five results)
 ```
 {
   "pageIndex": 0,
@@ -94,8 +94,7 @@ the target data to be filtered by and must match the corresponding App field typ
 
 ---
 
-#####
-Example 2: Grab all apps that either have avails greater than 15K OR have a score greater than 4
+##### Example 2: Grab all apps that either have avails greater than 15K OR have a score greater than 4
 
 ```
 {
@@ -119,7 +118,7 @@ Example 2: Grab all apps that either have avails greater than 15K OR have a scor
 *sorts*: The field field must be a valid key of App. This is the field that the results will be sorted by. The desc field indicates whether you would like the returned data to be ordered in ascending (false) or descending (true) order, lexicographically in the case of a string filter, numerically in the case of a number filter.
 
 ---
-#####Example 3: Grab “Vegas Crime Simulator 2”, “Monster Truck Racing Hero 3D”, apps that have the word “racing” in the title, or apps with categories that match either “violence” or “action”. Display the second page, with a page size of 10 per response. Sort returned apps by score in descending order.
+##### Example 3: Grab “Vegas Crime Simulator 2”, “Monster Truck Racing Hero 3D”, apps that have the word “racing” in the title, or apps with categories that match either “violence” or “action”. Display the second page, with a page size of 10 per response. Sort returned apps by score in descending order.
 
 ```
 {
@@ -180,7 +179,7 @@ AppMetrics {
 }
 ```
 ---
-#####Screenshots:
+##### Screenshots:
 
 Apps will either have a googlePlayStoreInfo or appStoreInfo key defined. The associated object shape is StoreInfo, inside which you will find an array of screenshots. These are URLs to the image resources.
 
@@ -241,7 +240,7 @@ export class UpdateEnrichedAppDto extends GetByIdDto {
 }
 ```
 ---
-####Object Definitions
+#### Object Definitions
 
 [Categories](https://gist.github.com/Ksmike/2ae3ffcc66d0196982ce18c0bb648e38) 
 [Countries](https://gist.github.com/Ksmike/ef6ba6f71936072941d760ce607d9321)

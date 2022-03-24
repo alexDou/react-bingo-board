@@ -45,6 +45,7 @@ export interface Network {
 export type AppsState = {
   totalCount: number;
   applications: App[];
+  applicationsSort: App[];
   request: RequestBody;
   reload: boolean;
 };

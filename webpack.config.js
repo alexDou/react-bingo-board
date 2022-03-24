@@ -71,9 +71,9 @@ module.exports = (env = {}) => {
             {
               loader: 'css-loader',
               options:{
-                localsConvention: 'camelCase',
                 modules: {
-                  localIdentName: dev ? '[name]__[local]' : '[hash:base64]'
+                  localIdentName: dev ? '[name]__[local]' : '[hash:base64]',
+                  exportLocalsConvention: 'camelCase'
                 }
               }
             },
@@ -151,7 +151,7 @@ module.exports = (env = {}) => {
         templateParameters: {
           base: serviceUrl
         },
-        favicon: "./res/images/logo-icon.png"
+        favicon: "./res/images/icons/logo.jpg"
       }),
       new webpack.ContextReplacementPlugin(
           /moment[/\\]locale$/,

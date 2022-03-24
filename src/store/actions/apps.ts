@@ -2,11 +2,11 @@ import {Dispatch} from 'redux';
 
 import {http, apiConfig} from 'api';
 import {AppsActionTypes} from 'store/action-types';
-import {NetworkStatus, RequestBody, StoreAction} from "../types";
+import {App, NetworkStatus, RequestBody, StoreAction} from "../types";
 import {RawResponse} from "api/types";
 import networkActions from './network';
 
-const getApps = (reqBody: RequestBody): any => {
+const getApps = (reqBody: RequestBody) => {
   return async (dispatch: Dispatch): Promise<StoreAction> => {
     try {
       dispatch(networkActions.setStatus(NetworkStatus.PENDING));
@@ -18,7 +18,11 @@ const getApps = (reqBody: RequestBody): any => {
 
       dispatch({
         type: AppsActionTypes.SET_APPS,
-        payload: {applications, totalCount: response.data.totalCount}
+        payload: {
+          applications,
+          applicationsSort: applications,
+          totalCount: response.data.totalCount
+        }
       });
       return dispatch(networkActions.setStatus(NetworkStatus.IDLE));
     } catch (err) {
@@ -28,4 +32,19 @@ const getApps = (reqBody: RequestBody): any => {
   };
 };
 
-export default { getApps };
+const searchApps = (search: string) => {
+  return (dispatch, getState) => {
+    const allApps = getState().apps.applications;
+    const rx = new RegExp(search, 'ig');
+    const appsSorted = search.length
+      ? allApps.filter((app: App) => rx.test(app.title))
+      : allApps;
+
+    return {
+      type: AppsActionTypes.SET_APPS_SORT,
+      payload: { applicationsSort: appsSorted }
+    }
+  }
+};
+
+export default { getApps, searchApps };
