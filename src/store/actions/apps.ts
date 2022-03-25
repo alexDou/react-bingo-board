@@ -5,15 +5,17 @@ import {AppsActionTypes} from 'store/action-types';
 import {App, NetworkStatus, RequestBody, StoreAction} from "../types";
 import {RawResponse} from "api/types";
 import networkActions from './network';
+import store from "store";
 
 const getApps = (reqBody: RequestBody) => {
   return async (dispatch: Dispatch): Promise<StoreAction> => {
     try {
       dispatch(networkActions.setStatus(NetworkStatus.PENDING));
-      const {endpoint, method} = apiConfig.fetchApps;
-      const response: RawResponse = await http[method](endpoint, {...reqBody});
-      const applications = response.data.totalCount !== 0
-        ? response.data.items
+      const {baseUrl, fetchApps: { endpoint, method }} = apiConfig;
+      const response: { data: RawResponse } = await http[method](`${baseUrl}${endpoint}`, {...reqBody});
+      console.log(response)
+      const applications = response.data.data.totalCount !== 0
+        ? response.data.data.items
         : [];
 
       dispatch({
@@ -33,17 +35,19 @@ const getApps = (reqBody: RequestBody) => {
 };
 
 const searchApps = (search: string) => {
-  return (dispatch, getState) => {
-    const allApps = getState().apps.applications;
-    const rx = new RegExp(search, 'ig');
-    const appsSorted = search.length
-      ? allApps.filter((app: App) => rx.test(app.title))
-      : allApps;
+  const allApps = store.getState().apps.applications;
+  let appsSorted = [];
+  if (search.length >= 3) {
+    appsSorted = allApps.filter(
+      (app: App) => app.title.toLowerCase().includes(search.toLowerCase())
+    )
+  } else {
+    appsSorted = allApps;
+  }
 
-    return {
-      type: AppsActionTypes.SET_APPS_SORT,
-      payload: { applicationsSort: appsSorted }
-    }
+  return {
+    type: AppsActionTypes.SET_APPS_SORT,
+    payload: { applicationsSort: appsSorted }
   }
 };
 

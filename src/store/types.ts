@@ -17,15 +17,30 @@ export interface Sort {
   desc: boolean;
 }
 
+type StoreInfo = {
+  title?: string;
+  contentRating: string;
+  icon?: string;
+  score?: number;
+  url?: string;
+  studio?: string;
+  genre: string;
+  screenshots: string[];
+}
+
 export interface App {
   _id: string;
   title: string;
   tags: string[];
   avails: number;
   score: number;
+  featured?: boolean;
+  isDeleted?: boolean;
   platform: undefined | "mobile" | "vr" | "ar";
-  geos: string[];
-  storeCategories: string;
+  googlePlayStoreInfo?: StoreInfo;
+  appStoreInfo?: StoreInfo;
+  geos?: string[];
+  storeCategories?: string;
   updatedAt: string;
   createdAt: string
 }

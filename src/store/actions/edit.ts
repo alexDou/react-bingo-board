@@ -10,8 +10,8 @@ const updateApp = (app: App) => {
   return async (dispatch: Dispatch): Promise<StoreAction> => {
     try {
       dispatch(networkActions.setStatus(NetworkStatus.PENDING));
-      const {endpoint, method} = apiConfig.updateApp;
-      const response: RawResponse = await http[method](`${endpoint}/${app._id}`, {...app});
+      const {baseUrl, updateApp: { endpoint, method }} = apiConfig;
+      const response: RawResponse = await http[method](`${baseUrl}${endpoint}/${app._id}`, {...app});
 
       if (response.message !== apiConfig.successMessage || !response.status) {
         throw new Error(response.message);

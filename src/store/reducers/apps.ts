@@ -3,11 +3,11 @@ import {AppsActionTypes} from "../action-types";
 
 const initialState: AppsState = {
   totalCount: 0,
-  applications: [],
-  applicationsSort: [],
+  applications:  [],
+  applicationsSort:  [],
   request: {
     pageIndex: 0,
-    pageSize: 0,
+    pageSize: 5,
     operator: "and",
     filters: [],
     sorts: []

@@ -1,5 +1,6 @@
 @import "colors";
 @import "fonts";
+@import "values";
 
 body, html {
   width: 100%;
@@ -26,6 +27,6 @@ body *, html * {
   height: auto;
   margin: 0 auto;
   background: $white;
-  box-shadow: 0 1px 1px rgba(11, 15, 50, 0.06);
-  border-radius: 20px;
+  box-shadow: $shadow;
+  border-radius: $radius;
 }
