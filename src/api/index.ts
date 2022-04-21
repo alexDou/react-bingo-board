@@ -1,10 +1,23 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
-export { default as apiConfig } from './api.config';
+import apiConfig from './api.config';
 
-export const http = axios.create({
+const http: AxiosInstance = axios.create({
   timeout: 4000,
   headers: {
-    'admix-api-key': '2b7123aa-1a2f-4230-9275-7131d0de3fca'
-  }
+    'Content-Type': 'application/json'
+  },
+  params: apiConfig.payload
 });
+
+const makeMove = async (exclude: number[]) => {
+  let move: number[] | null = null;
+  while (!move|| exclude.includes(move[0])) {
+    const resp: AxiosResponse<number[]> = await http.get(apiConfig.endpoint);
+    move = resp.data;
+  }
+
+  return move;
+}
+
+export default makeMove;

@@ -7,7 +7,7 @@ const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPl
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const postcssCssVars = require("postcss-css-variables");
 const postcssCustomMedia = require('postcss-custom-media');
-const { WebpackPluginServe: Serve } = require('webpack-plugin-serve');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const publicPath = '/';
 const VERSION = require("./package.json").version;
@@ -23,7 +23,7 @@ module.exports = (env = {}) => {
           "core-js/stable",
           "regenerator-runtime/runtime",
           "url-search-params-polyfill",
-          "webpack-plugin-serve/client",
+          "react-hot-loader/patch",
           "./src"
         ]
         : [
@@ -120,12 +120,11 @@ module.exports = (env = {}) => {
         }
       ],
     },
-
     devServer: {
-      host: "localhost",
-      historyApiFallback: true,
       static: "./dist",
-      port: 8080
+      hot: true,
+      host: "localhost",
+      historyApiFallback: true
     },
     optimization: dev
         ? {}
@@ -151,8 +150,9 @@ module.exports = (env = {}) => {
         templateParameters: {
           base: serviceUrl
         },
-        favicon: "./res/images/icons/logo.jpg"
+        favicon: "./res/images/icons/logo.png"
       }),
+      new ESLintPlugin(),
       new webpack.ContextReplacementPlugin(
           /moment[/\\]locale$/,
           /de/
@@ -165,9 +165,7 @@ module.exports = (env = {}) => {
         cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")],
       }),
       ...(dev
-          ? [
-            new Serve({port: 8800, progress: "minimal", waitForBuild: true})
-          ]
+          ? []
           : [
             new MiniCssExtractPlugin({
               filename: "[name].[chunkhash].css",
