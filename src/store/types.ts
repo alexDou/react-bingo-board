@@ -11,8 +11,13 @@ export type MoveAction = {
   }
 }
 
+export type BingoItem = {
+  idx: number;
+  value: string;
+}
+
 export interface BingoState {
-  cells: Record<number, string>[];
+  cells: BingoItem[];
   players: string[];
   play: this['players'][number];
   winners: this['players'][number][];

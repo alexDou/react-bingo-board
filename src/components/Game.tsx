@@ -5,9 +5,9 @@ import BingoGrid from "./BingoGrid";
 import useBingo from "hooks/useBingo";
 
 const Game: FC = () => {
-  const [bingo, dispatchBingo] = useBingo();
+  const [bingo] = useBingo();
 
-  return bingo.cells.length === 24 ? <BingoGrid /> : <Start />;
+  return bingo.cells.length === 25 ? <BingoGrid /> : <Start />;
 }
 
 export default Game;

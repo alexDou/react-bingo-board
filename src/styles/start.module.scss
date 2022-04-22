@@ -1,0 +1,103 @@
+@import "colors";
+@import "values";
+
+label {
+  display: block;
+  font-size: 1.8rem;
+  color: $grey50;
+  width: 100%;
+  height: 56px;
+  background: $greyFD;
+  padding: 4px;
+  border: 1px solid $grey900;
+  border-radius: 4px 4px 0 0;
+  small {
+    font-family: 'OpenSans-Italic', Tahoma, sans-serif;
+  }
+}
+textarea {
+  width: 100%;
+  height: 500px;
+  background: $elementBg;
+  border: 1px solid $grey900;
+  border-radius: 0 0 4px 4px;
+  margin-top: 2px;
+  padding: 8px;
+  overflow-y: hidden;
+}
+
+.bingo-start-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  .cells {
+    position: relative;
+    width: 100%;
+    height: auto;
+    .prefill {
+      position: absolute;
+      top: 27px;
+      right: 6px;
+      width: 108px;
+      height: 22px;
+    }
+  }
+  .players {
+    width: 100%;
+    height: auto;
+    textarea {
+      height: 200px;
+    }
+  }
+  .submit-block {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    .submit-btn {
+      width: 100%;
+      height: 42px;
+      margin: 0 auto;
+      font-size: 1.8rem;
+      background: $grey3F;
+      color: $white;
+      border: 1px solid $white;
+      border-radius: 4px;
+      text-transform: full-size-kana;
+      cursor: pointer;
+      box-shadow: 1px 1px $grey900;
+    }
+    .submit-btn:active {
+      box-shadow: none;
+    }
+    .submit-btn:disabled {
+      box-shadow: none;
+      background: $greyBD;
+      cursor: auto;
+    }
+  }
+
+  @media only screen and (min-width: $mediaMinWidth) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    justify-content: space-around;
+    max-width: $mediaBp1Width;
+    .cells {
+      width: 60%;
+    }
+    .players {
+      width: 34%;
+    }
+    .submit-block {
+      width: 100%;
+      max-width: initial;
+    }
+  }
+}
+

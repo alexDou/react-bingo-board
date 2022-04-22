@@ -18,7 +18,7 @@ function moveReducer(state: MoveState, action: MoveAction): MoveState  {
       return { ...state, error: payload.error }
     }
     default: {
-      throw new Error(`Unhandled action type: ${type} in ${arguments.callee.name}`);
+      throw new Error(`Unhandled action type: ${type} in moveReducer`);
     }
   }
 }

@@ -1,0 +1,43 @@
+@import "colors";
+
+.move-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  .btn {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width:120px;
+    height:120px;
+    border: 2px solid $greyFD;
+    border-radius: 50%;
+    color: $greyFD;
+    text-align:center;
+    text-decoration:none;
+    background: $grey3F;
+    box-shadow: 0 0 4px $greyFD;
+    cursor: pointer;
+    span {
+      display: block;
+      line-height: 32px;
+      width: 100px;
+      text-shadow: 1px 1px 1px $grey3F;
+      font: {
+        size: 1.8rem;
+        family: OpenSans-Bold, Tahoma, sans-serif;
+      }
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .btn:hover {
+    background: $grey50;
+  }
+  .btn:active {
+    background: $grey50;
+    border: none;
+  }
+}

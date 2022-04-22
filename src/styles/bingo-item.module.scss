@@ -1,0 +1,32 @@
+@import "colors";
+
+.bingo-item {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  padding: 20px;
+  background: $elementBg;
+  border: 1px solid $grey3F;
+  border-radius: 4px;
+  font: {
+    size: 1.6rem;
+    family: 'OpenSans-Bold', Tahoma, sans-serif;
+  }
+  color: $grey50;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .number {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font: {
+      size: .8rem;
+      family: OpenSans, Tahoma, sans-serif;
+    }
+    color: $greyBD;
+  }
+}

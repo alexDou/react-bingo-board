@@ -7,8 +7,9 @@ export const BingoContext = createContext({} as [BingoState, Dispatch<BingoActio
 function bingoReducer(state, action: BingoAction): BingoState  {
   const { type, payload } = action;
 
-  if (!state[type] || !payload[type]) {
-    throw new Error(`Unhandled action type: ${type} in ${arguments.callee.name}`);
+  if (!(type in state) || !payload[type]) {
+    console.log(payload, state)
+    throw new Error(`Unhandled action type: ${type} in bingoReducer`);
   }
 
   return { ...state, ...payload };
@@ -28,5 +29,30 @@ const BingoProvider: FC<BingoProviderProps> = (props) => {
 
   return <BingoContext.Provider value={reducer} {...props} />;
 }
+
+export const prefill = `wow
+auch
+ouch
+oops
+a-ha
+psht
+oh
+ah
+argh
+bu-ga-ga
+d'oh
+psst
+o-la-la
+karamba
+ogo
+hm
+au-ya
+yo-ho-ho
+brr
+fuff
+ha-ha
+mech
+pew
+yay`;
 
 export default BingoProvider;

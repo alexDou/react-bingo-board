@@ -1,4 +1,35 @@
 @font-face {
-  font-family: "Formata";
-  src: url("../../res/fonts/Formata.ttf") format("ttf");
+  font-family: 'OpenSans-Bold';
+  src: url('../../res/fonts/OpenSans-Bold.ttf') format('ttf'),
+  url('../../res/fonts/opensans-bold-webfont.woff2') format('woff2'),
+  url('../../res/fonts/opensans-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-Italic';
+  src: url('../../res/fonts/opensans-italic-webfont.woff2') format('woff2'),
+  url('../../res/fonts/opensans-italic-webfont.woff') format('woff'),
+  url('../../res/fonts/OpenSans-Italic.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans-Light';
+  src: url('../../res/fonts/opensans-light-webfont.woff2') format('woff2'),
+  url('../../res/fonts/opensans-light-webfont.woff') format('woff'),
+  url('../../res/fonts/OpenSans-Light.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'open_sansregular';
+  src: url('../../res/fonts/opensans-regular-webfont.woff2') format('woff2'),
+  url('../../res/fonts/opensans-regular-webfont.woff') format('woff'),
+  url('../../res/fonts/OpenSans-Regular.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
 }
