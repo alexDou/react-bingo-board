@@ -1,24 +1,31 @@
 @import "colors";
+@import "values";
 
 .bingo-item {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 120px;
-  padding: 20px;
+  display: table;
+  width: 19vw;
+  height: 19vw;
+  max-width: 120px;
+  max-height: 120px;
+  padding: 2px;
   background: $elementBg;
   border: 1px solid $grey3F;
   border-radius: 4px;
-  font: {
-    size: 1.6rem;
-    family: 'OpenSans-Bold', Tahoma, sans-serif;
+  overflow:hidden;
+  word-break: break-all;
+  span {
+    display: table-cell;
+    width: 16vw;
+    height: 16vw;
+    font: {
+      size: 1.2rem;
+      family: OpenSans, Tahoma, sans-serif;
+    }
+    color: $grey50;
+    text-align: center;
+    vertical-align: middle;
   }
-  color: $grey50;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   .number {
     position: absolute;
     top: 4px;
@@ -29,4 +36,22 @@
     }
     color: $greyBD;
   }
+  @media only screen and (min-width: $mediaMinWidth) {
+    padding: 4px;
+    span {
+      font: {
+        size: 1.6rem;
+        family: 'OpenSans-Bold', Tahoma, sans-serif;
+      }
+      width: 112px;
+      height: 112px;
+    }
+  }
+}
+
+.hit {
+  background: $hit;
+}
+.pending {
+  color: $greyBD;
 }

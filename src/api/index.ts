@@ -10,11 +10,21 @@ const http: AxiosInstance = axios.create({
   params: apiConfig.payload
 });
 
+const sleep = (delayMs: number) => {
+  let start = new Date().getTime();
+  while (new Date().getTime() < start + delayMs);
+}
+
 const makeMove = async (exclude: number[]) => {
   let move: number[] | null = null;
-  while (!move|| exclude.includes(move[0])) {
+  let i = 0;
+  while (!move || exclude.includes(move[0])) {
+    if (i >= 1) {
+      sleep(500);
+    }
     const resp: AxiosResponse<number[]> = await http.get(apiConfig.endpoint);
     move = resp.data;
+    i++;
   }
 
   return move;

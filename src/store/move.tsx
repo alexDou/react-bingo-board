@@ -30,7 +30,7 @@ type MoveProviderProps = {
 const MoveProvider: FC<MoveProviderProps> = (props) => {
   const reducer = useReducer(moveReducer, {
     status: 'idle',
-    moves: [],
+    moves: [13],
     error: null
   });
 

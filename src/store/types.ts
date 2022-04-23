@@ -1,19 +1,20 @@
 export interface MoveState {
-  status: string;
+  status: 'fulfilled' | 'pending' | 'idle';
   moves: number[];
   error: Error | null
 }
 
 export type MoveAction = {
   type: keyof MoveState;
-  payload: {
+  payload: Partial<{
     [k in keyof MoveState]: MoveState[k];
-  }
+  }>
 }
 
 export type BingoItem = {
   idx: number;
   value: string;
+  hit?: true;
 }
 
 export interface BingoState {
@@ -21,11 +22,13 @@ export interface BingoState {
   players: string[];
   play: this['players'][number];
   winners: this['players'][number][];
+  openToWin: number[][];
+  draw: boolean;
 }
 
 export type BingoAction = {
   type: keyof BingoState;
-  payload: {
+  payload: Partial<{
     [k in keyof BingoState]: BingoState[k];
-  }
+  }>
 }

@@ -1,36 +1,47 @@
 @import "colors";
+@import "values";
 
 .move-btn-wrapper {
   display: flex;
   justify-content: center;
-  .btn {
+  align-items: center;
+  .btn, .game-over {
     display: flex;
     flex-direction: column;
     align-content: center;
     align-items: center;
     justify-content: center;
-    width:120px;
-    height:120px;
+    width: 19vw;
+    height: 19vw;
+    max-width: 120px;
+    max-height: 120px;
     border: 2px solid $greyFD;
     border-radius: 50%;
     color: $greyFD;
     text-align:center;
-    text-decoration:none;
     background: $grey3F;
     box-shadow: 0 0 4px $greyFD;
     cursor: pointer;
     span {
       display: block;
-      line-height: 32px;
+      line-height: 4vw;
       width: 100px;
       text-shadow: 1px 1px 1px $grey3F;
       font: {
-        size: 1.8rem;
-        family: OpenSans-Bold, Tahoma, sans-serif;
+        size: 1.2rem;
+        family: 'OpenSans-Bold', Tahoma, sans-serif;
       }
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+    @media only screen and (min-width: $mediaMinWidth) {
+      span {
+        font: {
+          size: 1.8rem;
+        }
+        line-height: 2.2vw;
+      }
     }
   }
   .btn:hover {
@@ -39,5 +50,17 @@
   .btn:active {
     background: $grey50;
     border: none;
+  }
+  .game-over {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: auto;
+    span {
+      text-shadow: none;
+    }
+  }
+  .game-over:hover {
+    background: $grey3F;
   }
 }

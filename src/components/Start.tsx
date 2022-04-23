@@ -6,6 +6,12 @@ import cls from "styles/start.module.scss";
 import { prefill } from "store/bingo";
 import {BingoItem, BingoState} from "store/types";
 
+const trancate = (r: string[]) => {
+  return r.map(v => {
+    return v.length <= 24 ? v : v.substring(0, 22) + '...';
+  })
+}
+
 const sanitize = (r: string[]) => {
   return r.map(cell => {
     return cell
@@ -50,7 +56,7 @@ const Start: FC = () => {
   }, []);
 
   const handleSubmit = useCallback(() => {
-    const cells: BingoState['cells'] = insertEmptyCenter(shuffle(indexR(sanitize(cellsRef.current?.value.split(/\r?\n/)))));
+    const cells: BingoState['cells'] = insertEmptyCenter(shuffle(indexR(trancate(sanitize(cellsRef.current?.value.split(/\r?\n/))))));
     const players: BingoState['players'] = shuffle(sanitize(playersRef.current?.value.split(/\r?\n/)));
 
     dispatch({ type: 'cells', payload: { cells }});

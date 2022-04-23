@@ -1,0 +1,33 @@
+@import "colors";
+@import "values";
+
+.winner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  div {
+    display: block;
+    line-height: 8vw;
+    width: calc(19vw - 16px);
+    text-shadow: 1px 1px 1px $grey3F, -1px 1px 1px $grey50;
+    color: $winner;
+    font: {
+      size: 1.6rem;
+      family: OpenSans-Bold, Tahoma, sans-serif;
+    }
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media only screen and (min-width: $mediaMinWidth) {
+      width: 100px;
+      font-size: 1.8rem;
+      line-height: 2.4vw;
+    }
+  }
+}
+.emoji-holder {
+  width: 40px;
+  height: 40px;
+}
