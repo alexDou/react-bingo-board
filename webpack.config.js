@@ -42,7 +42,7 @@ module.exports = (env = {}) => {
     devtool: dev ? 'eval-source-map' : 'source-map',
     mode: dev ? 'development' : 'production',
     output: dev ? { path: publicPath, publicPath } : {
-      path: path.resolve(__dirname, './dist'),
+      path: path.resolve(__dirname, './build'),
       filename: '[name].[hash].js',
       publicPath
     },
@@ -121,7 +121,7 @@ module.exports = (env = {}) => {
       ],
     },
     devServer: {
-      static: "./dist",
+      static: "./build",
       hot: true,
       host: "localhost",
       historyApiFallback: true
@@ -162,7 +162,7 @@ module.exports = (env = {}) => {
         'VERSION': JSON.stringify(VERSION)
       }),
       new CleanWebpackPlugin({
-        cleanOnceBeforeBuildPatterns: [path.join(__dirname, "dist/**/*")],
+        cleanOnceBeforeBuildPatterns: [path.join(__dirname, "build/**/*")],
       }),
       ...(dev
           ? []

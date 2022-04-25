@@ -1,9 +1,9 @@
 {
-    "name": "admix-challenge",
+    "name": "react-bingo-board",
     "version": "0.0.0.0",
     "license": "WTFPL",
     "author": "Alex Dou",
-    "description": "Front-End Games App Discovery",
+    "description": "React implementation of Bingo board",
     "main": "dist/index.js",
     "scripts": {
         "all-checks": "yarn test && yarn run lint && yarn run type-check",
@@ -18,7 +18,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git@github.com:alexDou/games-board-react-ts.git"
+        "url": "git@github.com:alexDou/react-bingo-board.git"
     },
     "engineStrict": true,
     "engines": {
@@ -49,13 +49,13 @@
         "css-loader": "^6.7.1",
         "eslint": "^8.11.0",
         "eslint-config-react-app": "^7.0.0",
-        "eslint-webpack-plugin": "^3.1.1",
         "eslint-plugin-babel": "^5.3.1",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^6.0.0",
         "eslint-plugin-react": "^7.29.4",
         "eslint-plugin-react-hooks": "^4.3.0",
+        "eslint-webpack-plugin": "^3.1.1",
         "html-loader": "^3.1.0",
         "html-webpack-plugin": "^5.5.0",
         "mini-css-extract-plugin": "2.6.0",
