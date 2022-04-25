@@ -6,7 +6,7 @@ import useBingo from "hooks/useBingo";
 import useDispatch from "hooks/useDispatch";
 import Winner from "./Winner";
 import makeMove from "api";
-import { isWinningOrDraw } from "store/bingo";
+import { isWinningOrDraw, totalMovesAllowed } from "store/bingo";
 import cls from "styles/move.module.scss";
 
 const Move: FC = () => {
@@ -65,7 +65,7 @@ const Move: FC = () => {
     }
   }, [bingo.winners.length])
 
-  if ((bingo.draw || move.moves.length - 1 >= 12) && !winner) {
+  if ((bingo.draw || move.moves.length - 1 >= totalMovesAllowed) && !winner) {
     return (
       <div className={cls['move-btn-wrapper']}>
         <div className={cls['game-over']}>
@@ -84,7 +84,7 @@ const Move: FC = () => {
     <div className={cls['move-btn-wrapper']}>
       {['fulfilled', 'idle'].includes(move.status) &&
         <div className={cls['btn']} onClick={() => setNextMove(true)}>
-          <span>{!bingo.draw ? (move.moves.length - 1) < 12 ? bingo.play : 'End of' : 'Draw'}</span>
+          <span>{!bingo.draw ? (move.moves.length - 1) < totalMovesAllowed ? bingo.play : 'End of' : 'Draw'}</span>
           <span>{!bingo.draw ? 'MOVES' : 'Game'}</span>
         </div>
       }

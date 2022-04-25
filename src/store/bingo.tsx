@@ -2,6 +2,8 @@ import React, { FC, createContext, Dispatch, useReducer } from 'react';
 
 import { BingoState, BingoAction } from "./types";
 
+export const totalMovesAllowed = 16;
+
 export const BingoContext = createContext({} as [BingoState, Dispatch<BingoAction>]);
 
 function bingoReducer(state, action: BingoAction): BingoState  {
