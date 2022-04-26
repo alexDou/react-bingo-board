@@ -1,5 +1,17 @@
 ### React based minimalistic Bingo board
 
+#### Installation
+
+```bash
+# git clone https://github.com/alexDou/react-bingo-board.git
+# cd react-bingo-board
+# npm insall // or yarn install
+# npm run start // or yarn run start
+```
+Server runs on port 8080 by default <br /> 
+[http://localhost:8080](http://localhost:8080)
+
+
 #### Rules
 
 1. Copy-Paste or enter names of your cards. 24 no more no less. each separated with a new line.
