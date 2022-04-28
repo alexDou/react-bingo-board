@@ -46,8 +46,9 @@ const Start: FC = () => {
   const playersRef = useRef(null);
 
   const handleChange = useCallback(() => {
-    const cellsR = cellsRef.current?.value && cellsRef.current?.value.split(/\r?\n/);
+    const cellsR = cellsRef.current?.value && cellsRef.current?.value.trim().split(/\r?\n/);
     const playersR = playersRef.current?.value && playersRef.current?.value
+      .trim()
       .split(/\r?\n/)
       .filter(c => c.length > 1);
 
