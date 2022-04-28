@@ -5,6 +5,7 @@
   url('../../res/fonts/opensans-bold-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
@@ -14,6 +15,7 @@
   url('../../res/fonts/OpenSans-Italic.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
@@ -23,6 +25,7 @@
   url('../../res/fonts/OpenSans-Light.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }
 
 @font-face {
@@ -32,4 +35,5 @@
   url('../../res/fonts/OpenSans-Regular.ttf') format('ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: fallback;
 }

@@ -16,6 +16,7 @@ const BingoItem: FC<BingoItem> = ({idx, value, hit= false}) => {
   const itemClasses = cn({
     [cls['bingo-item']]: true,
     [cls['pending']]: move.status === 'pending',
+    [cls['pending-hit']]: move.status === 'pending' && hit,
     [cls['hit']]: move.status === 'fulfilled' && hit
   });
 

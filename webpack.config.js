@@ -43,7 +43,7 @@ module.exports = (env = {}) => {
     mode: dev ? 'development' : 'production',
     output: dev ? { path: publicPath, publicPath } : {
       path: path.resolve(__dirname, './dist'),
-      filename: '[name].[hash].js',
+      filename: '[name].[chunkhash].js',
       publicPath
     },
     module: {

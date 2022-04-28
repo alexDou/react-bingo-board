@@ -9,7 +9,7 @@ export const BingoContext = createContext({} as [BingoState, Dispatch<BingoActio
 function bingoReducer(state, action: BingoAction): BingoState  {
   const { type, payload } = action;
 
-  if (!(type in state) || !payload[type]) {
+  if (!(type in state) || !(type in payload)) {
     throw new Error(`Unhandled action type: ${type} in bingoReducer`);
   }
 

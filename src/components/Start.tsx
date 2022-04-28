@@ -37,6 +37,8 @@ const shuffle = (r: string[] | Record<string, number|string>[]) => {
     .map(v => v[0]);
 }
 
+let cellsAndPlayers: string[][] = [[], []];
+
 const Start: FC = () => {
   const [disableSubmit, setDisableSubmit] = useState<boolean>(true);
   const [, dispatchBingo] = useBingo();
@@ -46,19 +48,29 @@ const Start: FC = () => {
   const playersRef = useRef(null);
 
   const handleChange = useCallback(() => {
-    const cellsR = cellsRef.current?.value && cellsRef.current?.value.trim().split(/\r?\n/);
+    const cellsR = cellsRef.current?.value && cellsRef.current?.value
+      .trim()
+      .split(/\r?\n/);
     const playersR = playersRef.current?.value && playersRef.current?.value
       .trim()
       .split(/\r?\n/)
       .filter(c => c.length > 1);
 
-    setDisableSubmit(() => cellsR.length !== 24 || playersR.length < 1 || playersR.length > 4);
+    const disable = cellsR.length !== 24 || playersR.length < 1 || playersR.length > 4
+    setDisableSubmit(disable);
+    if (!disable) {
+      cellsAndPlayers = [cellsR, playersR];
+    }
     return;
   }, []);
 
-  const handleSubmit = useCallback(() => {
-    const cells: BingoState['cells'] = insertEmptyCenter(shuffle(indexR(trancate(sanitize(cellsRef.current?.value.split(/\r?\n/))))));
-    const players: BingoState['players'] = shuffle(sanitize(playersRef.current?.value.split(/\r?\n/)));
+  const handleSubmit = useCallback((cellsRaw: string[], playersRaw: string[]) => {
+    const cells: BingoState['cells'] = insertEmptyCenter(shuffle(indexR(trancate(sanitize(
+      cellsRaw
+    )))));
+    const players: BingoState['players'] = shuffle(sanitize(
+      playersRaw
+    ));
 
     dispatch({ type: 'cells', payload: { cells }});
     dispatch({ type: 'players', payload: { players }});
@@ -106,7 +118,7 @@ const Start: FC = () => {
           type="button"
           className={cls['submit-btn']}
           disabled={disableSubmit}
-          onClick={() => handleSubmit()}
+          onClick={() => handleSubmit(cellsAndPlayers[0], cellsAndPlayers[1])}
         >
           All Set
         </button>
