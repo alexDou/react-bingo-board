@@ -64,12 +64,12 @@ const Start: FC = () => {
     return;
   }, []);
 
-  const handleSubmit = useCallback((cellsRaw: string[], playersRaw: string[]) => {
+  const handleSubmit = useCallback(() => {
     const cells: BingoState['cells'] = insertEmptyCenter(shuffle(indexR(trancate(sanitize(
-      cellsRaw
+      cellsAndPlayers[0]
     )))));
     const players: BingoState['players'] = shuffle(sanitize(
-      playersRaw
+      cellsAndPlayers[1]
     ));
 
     dispatch({ type: 'cells', payload: { cells }});
@@ -118,7 +118,7 @@ const Start: FC = () => {
           type="button"
           className={cls['submit-btn']}
           disabled={disableSubmit}
-          onClick={() => handleSubmit(cellsAndPlayers[0], cellsAndPlayers[1])}
+          onClick={() => handleSubmit()}
         >
           All Set
         </button>
